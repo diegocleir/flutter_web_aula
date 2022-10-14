@@ -8,9 +8,14 @@ class WebAppBar extends StatelessWidget {
     return AppBar(
       title: Row(
         children: [
-          Image.asset(
-            "imagens/logo.png",
-            fit: BoxFit.contain,
+          GestureDetector(
+            child: Image.asset(
+              "imagens/logo.png",
+              fit: BoxFit.contain,
+            ),
+            onTap: (){
+              Navigator.of(context).popAndPushNamed("/");
+            },
           ),
           Expanded(child: Container()),
           IconButton(
@@ -32,7 +37,13 @@ class WebAppBar extends StatelessWidget {
           ),
           SizedBox(width: 10,),
           TextButton(
-              onPressed: (){},
+              onPressed: (){
+                ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                        content: Text("Clicou em entrar!")
+                    )
+                );
+              },
               child: Text("Entrar"),
               style: ButtonStyle(
                 backgroundColor: MaterialStateColor.resolveWith((states) => Colors.orange),

@@ -5,9 +5,11 @@ import 'package:flutter_web_aula/regras_layout.dart';
 import 'package:flutter_web_aula/responsividade_media_query.dart';
 import 'package:flutter_web_aula/responsividade_row_col.dart';
 import 'package:flutter_web_aula/responsividade_wrap.dart';
+import 'package:flutter_web_aula/widget/detalhes_produto.dart';
+import 'package:get/get.dart';
 
 void main() {
-  runApp(MaterialApp(
+  runApp(GetMaterialApp(
     title: "FlutterWeb",
     debugShowCheckedModeBanner: false,
     //home: ResponsividadeMediaQuery()
@@ -15,7 +17,17 @@ void main() {
       //home: ResponsividadeWrap()
     // home: Orientacao(),
     //home: RegrasLayout()
-    home: LojaVirtual()
+    //home: LojaVirtual(),
+    initialRoute: '/',
+    routes: {
+      '/': (context) => LojaVirtual(),
+      '/produto/:id': (context) => DetalhesProduto(),
+    },
+    //home: LojaVirtual(),
+    getPages: [
+      GetPage(name: '/', page: () => LojaVirtual()),
+      GetPage(name: '/produto/:id', page: () => DetalhesProduto()),
+    ],
   ));
 }
 

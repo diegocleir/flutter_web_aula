@@ -6,9 +6,14 @@ class MobileAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Image.asset(
+      title: GestureDetector(
+        child: Image.asset(
           "imagens/logo.png",
-        fit: BoxFit.contain,
+          fit: BoxFit.contain,
+        ),
+        onTap: (){
+          Navigator.of(context).popAndPushNamed("/");
+        },
       ),
       actions: [
         IconButton(
